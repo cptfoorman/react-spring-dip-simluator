@@ -3,6 +3,7 @@ package cz.dipcom.simulator.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -20,7 +21,7 @@ public class BookEntity {
         @Column(nullable = false)
         private Boolean digitized;
         @Column(nullable = false)
-        private String date;
+        private LocalDateTime date;
         @Column(nullable = false)
         private String language;
         @Column(nullable = false)
@@ -84,7 +85,7 @@ public class BookEntity {
             return digitized;
         }
 
-        public String getDate() {
+        public LocalDateTime getDate() {
             return date;
         }
 
@@ -179,7 +180,7 @@ public class BookEntity {
             this.digitized = digitized;
         }
 
-        public void setDate(String date) {
+        public void setDate(LocalDateTime date) {
             this.date = date;
         }
 
