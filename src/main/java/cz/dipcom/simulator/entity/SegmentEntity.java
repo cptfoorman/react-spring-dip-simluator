@@ -3,7 +3,7 @@ package cz.dipcom.simulator.entity;
 import jakarta.persistence.*;
 
 
-@Entity
+@Entity(name = "segment")
 public class SegmentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

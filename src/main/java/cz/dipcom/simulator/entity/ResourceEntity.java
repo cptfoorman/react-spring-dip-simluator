@@ -2,7 +2,7 @@ package cz.dipcom.simulator.entity;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "resource")
 public class ResourceEntity {
 
     @Id
