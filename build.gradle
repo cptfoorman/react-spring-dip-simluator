@@ -23,6 +23,10 @@ dependencies {
     implementation("redis.clients:jedis")
     // https://mvnrepository.com/artifact/org.mapstruct/mapstruct
     implementation("org.mapstruct:mapstruct:1.6.3")
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    implementation("org.projectlombok:lombok:1.18.36")
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok-mapstruct-binding
+    implementation("org.projectlombok:lombok-mapstruct-binding:0.2.0")
 }
 
 test {
