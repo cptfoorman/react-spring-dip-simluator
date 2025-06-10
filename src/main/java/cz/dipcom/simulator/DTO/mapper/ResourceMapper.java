@@ -4,7 +4,9 @@ import cz.dipcom.simulator.DTO.BookDTO;
 import cz.dipcom.simulator.DTO.ResourceDTO;
 import cz.dipcom.simulator.entity.BookEntity;
 import cz.dipcom.simulator.entity.ResourceEntity;
+import org.mapstruct.Mapper;
 
+@Mapper(componentModel = "spring")
 public interface ResourceMapper {
     ResourceEntity toEntity(ResourceDTO DTO);
     ResourceDTO toDTO(ResourceEntity entity);
