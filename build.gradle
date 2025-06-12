@@ -27,6 +27,8 @@ dependencies {
     implementation("org.projectlombok:lombok:1.18.36")
     // https://mvnrepository.com/artifact/org.projectlombok/lombok-mapstruct-binding
     implementation("org.projectlombok:lombok-mapstruct-binding:0.2.0")
+    // https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
 }
 
 test {

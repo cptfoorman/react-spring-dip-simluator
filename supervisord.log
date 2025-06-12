@@ -74,3 +74,95 @@
 2025-06-09 15:35:10,266 INFO spawned: 'watcher' with pid 8
 2025-06-09 15:35:11,272 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
 2025-06-09 15:35:11,273 INFO success: watcher entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-11 17:25:19,384 WARN received SIGTERM indicating exit request
+2025-06-11 17:25:19,436 INFO waiting for bootrun, watcher to die
+2025-06-11 17:25:21,529 WARN stopped: watcher (exit status 143)
+2025-06-11 17:25:22,557 INFO waiting for bootrun to die
+2025-06-11 17:25:23,566 WARN stopped: bootrun (exit status 143)
+2025-06-11 17:25:32,358 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-06-11 17:25:32,566 INFO supervisord started with pid 1
+2025-06-11 17:25:33,720 INFO spawned: 'bootrun' with pid 7
+2025-06-11 17:25:33,814 INFO spawned: 'watcher' with pid 8
+2025-06-11 17:25:34,851 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-11 17:25:34,890 INFO success: watcher entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-11 17:29:27,004 INFO exited: bootrun (exit status 0; expected)
+2025-06-11 17:29:25,780 INFO spawned: 'bootrun' with pid 610
+2025-06-11 17:29:26,792 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-11 17:29:55,380 WARN received SIGTERM indicating exit request
+2025-06-11 17:29:55,397 INFO waiting for bootrun, watcher to die
+2025-06-11 17:29:56,944 WARN stopped: watcher (exit status 143)
+2025-06-11 17:29:58,319 WARN stopped: bootrun (exit status 143)
+2025-06-11 19:33:02,536 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-06-11 19:33:02,571 INFO supervisord started with pid 1
+2025-06-11 19:33:03,594 INFO spawned: 'bootrun' with pid 8
+2025-06-11 19:33:03,627 INFO spawned: 'watcher' with pid 9
+2025-06-11 19:33:04,639 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-11 19:33:04,648 INFO success: watcher entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-11 19:36:10,816 INFO exited: bootrun (exit status 0; expected)
+2025-06-11 19:36:11,940 INFO spawned: 'bootrun' with pid 582
+2025-06-11 19:36:12,981 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-11 19:39:46,875 INFO exited: bootrun (exit status 0; expected)
+2025-06-11 19:39:48,411 INFO spawned: 'bootrun' with pid 824
+2025-06-11 19:39:49,591 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-11 19:41:01,501 INFO exited: bootrun (exit status 0; expected)
+2025-06-11 19:41:02,592 INFO spawned: 'bootrun' with pid 1053
+2025-06-11 19:41:03,601 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-12 09:52:34,435 INFO exited: bootrun (exit status 0; expected)
+2025-06-12 09:52:35,499 INFO spawned: 'bootrun' with pid 1314
+2025-06-12 09:52:36,504 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-12 09:56:33,134 INFO exited: bootrun (exit status 0; expected)
+2025-06-12 09:56:33,251 INFO spawned: 'bootrun' with pid 1549
+2025-06-12 09:56:34,268 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-12 10:01:35,356 WARN received SIGTERM indicating exit request
+2025-06-12 10:01:35,411 INFO waiting for bootrun, watcher to die
+2025-06-12 10:01:37,387 WARN stopped: watcher (exit status 143)
+2025-06-12 10:01:38,410 INFO waiting for bootrun to die
+2025-06-12 10:01:39,565 WARN stopped: bootrun (exit status 143)
+2025-06-12 10:03:02,961 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-06-12 10:03:03,027 INFO supervisord started with pid 1
+2025-06-12 10:03:04,128 INFO spawned: 'bootrun' with pid 7
+2025-06-12 10:03:05,253 INFO spawned: 'watcher' with pid 8
+2025-06-12 10:03:06,421 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-12 10:03:06,427 INFO success: watcher entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-12 10:13:12,488 INFO exited: bootrun (exit status 0; expected)
+2025-06-12 10:13:13,679 INFO spawned: 'bootrun' with pid 633
+2025-06-12 10:13:14,697 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-12 10:13:22,673 WARN exited: bootrun (exit status 1; not expected)
+2025-06-12 10:13:23,706 INFO spawned: 'bootrun' with pid 675
+2025-06-12 10:13:24,709 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-12 10:14:49,456 WARN exited: bootrun (exit status 1; not expected)
+2025-06-12 10:14:50,703 INFO spawned: 'bootrun' with pid 719
+2025-06-12 10:14:51,822 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-12 10:16:06,184 WARN exited: bootrun (exit status 1; not expected)
+2025-06-12 10:16:07,689 INFO spawned: 'bootrun' with pid 762
+2025-06-12 10:16:08,757 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-12 10:17:28,276 WARN exited: bootrun (exit status 1; not expected)
+2025-06-12 10:17:29,538 INFO spawned: 'bootrun' with pid 805
+2025-06-12 10:17:30,618 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-12 10:17:46,638 WARN received SIGTERM indicating exit request
+2025-06-12 10:17:46,679 INFO waiting for bootrun, watcher to die
+2025-06-12 10:17:48,640 WARN stopped: watcher (exit status 143)
+2025-06-12 10:17:50,362 WARN stopped: bootrun (exit status 143)
+2025-06-12 10:20:07,266 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-06-12 10:20:07,310 INFO supervisord started with pid 1
+2025-06-12 10:20:08,367 INFO spawned: 'bootrun' with pid 7
+2025-06-12 10:20:08,427 INFO spawned: 'watcher' with pid 8
+2025-06-12 10:20:09,449 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-12 10:20:09,478 INFO success: watcher entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-12 10:24:57,022 INFO exited: bootrun (exit status 0; expected)
+2025-06-12 10:24:58,173 INFO spawned: 'bootrun' with pid 622
+2025-06-12 10:24:59,204 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-12 10:27:44,075 INFO exited: bootrun (exit status 0; expected)
+2025-06-12 10:27:45,216 INFO spawned: 'bootrun' with pid 869
+2025-06-12 10:27:46,241 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-12 10:29:02,549 WARN received SIGTERM indicating exit request
+2025-06-12 10:29:02,638 INFO waiting for bootrun, watcher to die
+2025-06-12 10:29:04,851 WARN stopped: watcher (exit status 143)
+2025-06-12 10:29:05,884 INFO waiting for bootrun to die
+2025-06-12 10:29:07,686 WARN stopped: bootrun (exit status 143)
+2025-06-12 10:29:41,286 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-06-12 10:29:41,309 INFO supervisord started with pid 1
+2025-06-12 10:29:42,360 INFO spawned: 'bootrun' with pid 7
+2025-06-12 10:29:42,458 INFO spawned: 'watcher' with pid 8
+2025-06-12 10:29:43,474 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-12 10:29:43,493 INFO success: watcher entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

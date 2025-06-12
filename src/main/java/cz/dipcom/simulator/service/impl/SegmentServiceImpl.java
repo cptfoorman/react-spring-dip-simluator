@@ -1,9 +1,55 @@
 package cz.dipcom.simulator.service.impl;
 
 
+import cz.dipcom.simulator.DTO.SegmentDTO;
+import cz.dipcom.simulator.DTO.mapper.SegmentMapper;
+import cz.dipcom.simulator.entity.SegmentEntity;
+import cz.dipcom.simulator.repository.SegmentRepository;
 import cz.dipcom.simulator.service.SegmentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class SegmentServiceImpl implements SegmentService {
+
+    @Autowired
+    private SegmentMapper segmentMapper;
+
+    @Autowired
+    private SegmentRepository segmentRepository;
+
+    @Override
+    public SegmentDTO getSegment(Long id) {
+        SegmentEntity segment = segmentRepository.getReferenceById(id);
+        return segmentMapper.toDTO(segment);
+    }
+
+    @Override
+    public SegmentDTO addSegment(SegmentDTO segmentDTO) {
+        SegmentEntity newSegment = segmentMapper.toEntity(segmentDTO);
+        SegmentEntity savedSegment = segmentRepository.save(newSegment);
+        return segmentMapper.toDTO(savedSegment);
+    }
+
+    @Override
+    public SegmentDTO editSegment(Long id, SegmentDTO segmentDTO) {
+        return null;
+    }
+
+    @Override
+    public SegmentDTO removeSegment(Long id) {
+        return null;
+    }
+
+    @Override
+    public List<SegmentDTO> getAllSegments() {
+        List<SegmentDTO> results = new ArrayList<>();
+        for (SegmentEntity segment:segmentRepository.findAll()){
+            results.add(segmentMapper.toDTO(segment));
+        }
+        return results;
+    }
 }

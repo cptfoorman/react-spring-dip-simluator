@@ -12,6 +12,9 @@ import java.util.List;
 @Entity(name = "item")
 public class ItemEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(nullable = false)
     private String callNumber;
     @Column(nullable = false)
     private String title;

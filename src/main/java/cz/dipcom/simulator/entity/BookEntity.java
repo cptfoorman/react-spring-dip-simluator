@@ -57,13 +57,13 @@ public class BookEntity {
     @ElementCollection
     private List<String> sites;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private ItemEntity item;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ResourceEntity> resources;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SegmentEntity> segments;
 
 }
