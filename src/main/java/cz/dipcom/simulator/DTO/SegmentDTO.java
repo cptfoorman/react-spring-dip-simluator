@@ -1,10 +1,20 @@
 package cz.dipcom.simulator.DTO;
 
-public class SegmentDTO {
-    private String url;
-    private Integer count;
-    private String link;
 
-    // Constructors, Getters, Setters
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class SegmentDTO {
+    @NotNull
+    private String url;
+    @NotNull
+    private Integer count;
+    @NotNull
+    private String link;
 }
 

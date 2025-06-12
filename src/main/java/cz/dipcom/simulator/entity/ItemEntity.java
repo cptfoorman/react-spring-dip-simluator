@@ -31,6 +31,4 @@ public class ItemEntity {
 
     @ElementCollection
     private List<String> notes;
-
-    // Getters and setters
 }

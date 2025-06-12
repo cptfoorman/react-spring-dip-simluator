@@ -166,3 +166,8 @@
 2025-06-12 10:29:42,458 INFO spawned: 'watcher' with pid 8
 2025-06-12 10:29:43,474 INFO success: bootrun entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
 2025-06-12 10:29:43,493 INFO success: watcher entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-06-12 14:11:33,200 WARN received SIGTERM indicating exit request
+2025-06-12 14:11:33,274 INFO waiting for bootrun, watcher to die
+2025-06-12 14:11:36,498 WARN stopped: watcher (exit status 143)
+2025-06-12 14:11:36,531 INFO waiting for bootrun to die
+2025-06-12 14:11:38,384 WARN stopped: bootrun (exit status 143)

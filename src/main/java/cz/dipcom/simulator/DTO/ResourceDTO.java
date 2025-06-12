@@ -1,16 +1,32 @@
 package cz.dipcom.simulator.DTO;
 
-public class ResourceDTO {
-    private String url;
-    private String pdfUrl;
-    private String djvuTextFile;
-    private String fullTextFile;
-    private String fullTextDerivative;
-    private String imageUrl;
-    private String paprikaResourcePath;
-    private Integer files;
-    private Integer segments;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    // Constructors, Getters, Setters
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ResourceDTO {
+    @NotNull
+    private String url;
+    @NotNull
+    private String pdfUrl;
+    @NotNull
+    private String djvuTextFile;
+    @NotNull
+    private String fullTextFile;
+    @NotNull
+    private String fullTextDerivative;
+    @NotNull
+    private String imageUrl;
+    @NotNull
+    private String paprikaResourcePath;
+    @NotNull
+    private Integer files;
+    @NotNull
+    private Integer segments;
 }
 

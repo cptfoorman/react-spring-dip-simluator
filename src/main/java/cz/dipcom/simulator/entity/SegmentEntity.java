@@ -1,8 +1,11 @@
 package cz.dipcom.simulator.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
-
+@Getter
+@Setter
 @Entity(name = "segment")
 public class SegmentEntity {
     @Id
@@ -16,6 +19,4 @@ public class SegmentEntity {
     private Integer count;
     @Column(nullable = false)
     private String link;
-
-        // Getters and setters
 }

@@ -1,7 +1,11 @@
 package cz.dipcom.simulator.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity(name = "resource")
 public class ResourceEntity {
 
@@ -28,6 +32,4 @@ public class ResourceEntity {
     private Integer files;
     @Column(nullable = false)
     private Integer segments;
-
-        // Getters and setters
 }
