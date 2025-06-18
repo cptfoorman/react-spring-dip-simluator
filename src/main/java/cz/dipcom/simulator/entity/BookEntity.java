@@ -2,30 +2,45 @@ package cz.dipcom.simulator.entity;
 
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 public class BookEntity {
     @Id
-    private Long id;
-    @Column(nullable = false)
-    private Boolean access_restricted;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idNum;
+
     @Column(nullable = false)
     private String title;
-    @Column(nullable = false)
-    private String description;
-    @Column(nullable = false)
-    private Boolean digitized;
-    @Column(nullable = false)
-    private LocalDateTime date;
-    @Column(nullable = false)
-    private String language;
     @Column(nullable = false)
     private String type;
     @Column(nullable = false)
     private String url;
+    @Column(nullable = false)
+    private String shelfId;
+
+    @Column(nullable = false)
+    private boolean accessRestricted;
+    @Column(nullable = false)
+    private boolean digitized;
+    @Column(nullable = false)
+    private boolean hasSegments;
+    @Column(nullable = false)
+    private String urlId;
+
+    @Column(nullable = false)
+    private String date;
+    @Column(nullable = false)
+    private OffsetDateTime extractTimestamp;
+    @Column(nullable = false)
+    private OffsetDateTime timestamp;
 
     @ElementCollection
     private List<String> aka;
@@ -34,36 +49,39 @@ public class BookEntity {
     private List<String> contributors;
 
     @ElementCollection
-    private List<String> campaigns;
+    private List<String> language;
 
     @ElementCollection
-    private List<String> imageUrls;
+    private List<String> mimeType;
 
     @ElementCollection
-    private List<String> mimeTypes;
+    private List<String> number;
 
     @ElementCollection
-    private List<String> onlineFormats;
+    private List<String> numberLccn;
+
 
     @ElementCollection
-    private List<String> originalFormats;
+    private List<String> numberOclc;
 
     @ElementCollection
-    private List<String> otherTitles;
+    private List<String> onlineFormat;
 
     @ElementCollection
-    private List<String> partOfCollections;
+    private List<String> imageUrl;
+
 
     @ElementCollection
-    private List<String> sites;
+    private List<String> partof;
+
 
     @OneToOne(cascade = CascadeType.ALL)
     private ItemEntity item;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ResourceEntity> resources;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SegmentEntity> segments;
 
 }

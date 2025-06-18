@@ -1,6 +1,7 @@
 package cz.dipcom.simulator.DTO;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,48 +15,55 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookDTO {
-    @NotNull
-    private Long id;
-    @NotNull
-    private Boolean access_restricted;
+    @JsonProperty("numericId")
+    private Long idNum;
     @NotNull
     private String title;
-    @NotNull
-    private String description;
-    @NotNull
-    private Boolean digitized;
-    @NotNull
-    private LocalDateTime date;
-    @NotNull
-    private String language;
     @NotNull
     private String type;
     @NotNull
     private String url;
+    @NotNull
+    private String shelfId;
+
+    @NotNull
+    @JsonProperty("id")
+    private String urlId;
+    @NotNull
+    private boolean accessRestricted;
+    @NotNull
+    private boolean digitized;
+    @NotNull
+    private boolean hasSegments;
+
+    private String date;
+    private String  extractTimestamp;
+    private String  timestamp;
 
     @NotNull
     private List<String> aka;
     @NotNull
     private List<String> contributors;
     @NotNull
-    private List<String> campaigns;
+    private List<String> language;
     @NotNull
-    private List<String> imageUrls;
+    private List<String> mimeType;
     @NotNull
-    private List<String> mimeTypes;
+    private List<String> number;
     @NotNull
-    private List<String> onlineFormats;
+    private List<String> numberLccn;
     @NotNull
-    private List<String> originalFormats;
+    private List<String> numberOclc;
     @NotNull
-    private List<String> otherTitles;
+    private List<String> onlineFormat;
     @NotNull
-    private List<String> partOfCollections;
+    private List<String> imageUrl;
     @NotNull
-    private List<String> sites;
+    private List<String> partof;
 
     private ItemDTO item;
     private List<ResourceDTO> resources;
     private List<SegmentDTO> segments;
+
 
 }

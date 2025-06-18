@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-06-12T10:30:31+0000",
+    date = "2025-06-18T16:41:00+0200",
     comments = "version: 1.6.3, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.13.jar, environment: Java 21.0.7 (Eclipse Adoptium)"
 )
 @Component
@@ -21,6 +21,20 @@ public class ResourceMapperImpl implements ResourceMapper {
 
         ResourceEntity resourceEntity = new ResourceEntity();
 
+        resourceEntity.setId( DTO.getId() );
+        resourceEntity.setDjvuTextFile( DTO.getDjvuTextFile() );
+        resourceEntity.setFulltextDerivative( DTO.getFulltextDerivative() );
+        resourceEntity.setFulltextFile( DTO.getFulltextFile() );
+        resourceEntity.setImage( DTO.getImage() );
+        resourceEntity.setPaprikaResourcePath( DTO.getPaprikaResourcePath() );
+        resourceEntity.setPdf( DTO.getPdf() );
+        resourceEntity.setSearch( DTO.getSearch() );
+        resourceEntity.setUrl( DTO.getUrl() );
+        resourceEntity.setFiles( DTO.getFiles() );
+        resourceEntity.setRepresentativeIndex( DTO.getRepresentativeIndex() );
+        resourceEntity.setSegments( DTO.getSegments() );
+        resourceEntity.setVersion( DTO.getVersion() );
+
         return resourceEntity;
     }
 
@@ -31,6 +45,20 @@ public class ResourceMapperImpl implements ResourceMapper {
         }
 
         ResourceDTO resourceDTO = new ResourceDTO();
+
+        resourceDTO.setId( entity.getId() );
+        resourceDTO.setDjvuTextFile( entity.getDjvuTextFile() );
+        resourceDTO.setFulltextDerivative( entity.getFulltextDerivative() );
+        resourceDTO.setFulltextFile( entity.getFulltextFile() );
+        resourceDTO.setImage( entity.getImage() );
+        resourceDTO.setPaprikaResourcePath( entity.getPaprikaResourcePath() );
+        resourceDTO.setPdf( entity.getPdf() );
+        resourceDTO.setSearch( entity.getSearch() );
+        resourceDTO.setUrl( entity.getUrl() );
+        resourceDTO.setRepresentativeIndex( entity.getRepresentativeIndex() );
+        resourceDTO.setVersion( entity.getVersion() );
+        resourceDTO.setSegments( entity.getSegments() );
+        resourceDTO.setFiles( entity.getFiles() );
 
         return resourceDTO;
     }

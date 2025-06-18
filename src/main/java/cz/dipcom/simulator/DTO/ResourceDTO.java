@@ -10,23 +10,32 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResourceDTO {
-    @NotNull
-    private String url;
-    @NotNull
-    private String pdfUrl;
+    private Long id;
     @NotNull
     private String djvuTextFile;
     @NotNull
-    private String fullTextFile;
+    private String fulltextDerivative;
     @NotNull
-    private String fullTextDerivative;
+    private String fulltextFile;
     @NotNull
-    private String imageUrl;
+    private String image;
     @NotNull
     private String paprikaResourcePath;
     @NotNull
-    private Integer files;
+    private String pdf;
     @NotNull
-    private Integer segments;
+    private String search;
+    @NotNull
+    private String url;
+    @NotNull
+    private int representativeIndex;
+    @NotNull
+    private int version;
+    @NotNull
+    private int segments;
+    @NotNull
+    private int files;
+
+
 }
 

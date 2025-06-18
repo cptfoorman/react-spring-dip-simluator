@@ -12,24 +12,32 @@ public class ResourceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    private BookEntity book;
-    @Column(nullable = false)
-    private String url;
-    @Column(nullable = false)
-    private String pdfUrl;
+
     @Column(nullable = false)
     private String djvuTextFile;
     @Column(nullable = false)
-    private String fullTextFile;
+    private String fulltextDerivative;
     @Column(nullable = false)
-    private String fullTextDerivative;
+    private String fulltextFile;
     @Column(nullable = false)
-    private String imageUrl;
+    private String image;
     @Column(nullable = false)
     private String paprikaResourcePath;
     @Column(nullable = false)
-    private Integer files;
+    private String pdf;
     @Column(nullable = false)
-    private Integer segments;
+    private String search;
+    @Column(nullable = false)
+    private String url;
+
+
+    @Column(nullable = false)
+    private int files;
+    @Column(nullable = false)
+    private int representativeIndex;
+    @Column(nullable = false)
+    private int segments;
+    @Column(nullable = false)
+    private int version;
+
 }

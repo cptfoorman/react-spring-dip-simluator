@@ -1,5 +1,6 @@
 package cz.dipcom.simulator.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -14,22 +15,26 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ItemDTO {
-    @NotNull
-    private String callNumber;
+    private Long id;
     @NotNull
     private String title;
     @NotNull
-    private String createdPublished;
+    @JsonProperty("created_published")
+    private List<String> createdPublished;
+
     @NotNull
-    @Positive
-    private LocalDateTime date;
+    @JsonProperty("call_number")
+    private List<String> callNumber;
     @NotNull
-    private String format;
+    private List<String> contributors;
     @NotNull
-    private String medium;
+    private List<String> format;
     @NotNull
-    private String language;
+    private List<String> language;
+    @NotNull
+    private List<String> medium;
     @NotNull
     private List<String> notes;
+
 
 }

@@ -1,11 +1,15 @@
 package cz.dipcom.simulator.service.impl;
 
 
+import cz.dipcom.simulator.DTO.ItemDTO;
 import cz.dipcom.simulator.DTO.ResourceDTO;
 import cz.dipcom.simulator.DTO.mapper.ResourceMapper;
+import cz.dipcom.simulator.entity.BookEntity;
+import cz.dipcom.simulator.entity.ItemEntity;
 import cz.dipcom.simulator.entity.ResourceEntity;
 import cz.dipcom.simulator.repository.ResourceRepository;
 import cz.dipcom.simulator.service.ResourceService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +34,13 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public ResourceDTO editResource(Long id, ResourceDTO resourceDTO) {
-        return null;
+        if (resourceRepository.existsById(id)) {
+            throw new EntityNotFoundException("Person with id " + id + " wasn't found in the database.");
+        }
+        ResourceEntity entity =resourceMapper.toEntity(resourceDTO);
+        entity.setId(id);
+        ResourceEntity saved =resourceRepository.save(entity);
+        return resourceMapper.toDTO(saved);
     }
 
     @Override
@@ -42,7 +52,10 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public ResourceDTO removeResource(Long id) {
-        return null;
+        ResourceEntity resource = resourceRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        ResourceDTO model = resourceMapper.toDTO(resource);
+        resourceRepository.delete(resource);
+        return model;
     }
 
     @Override

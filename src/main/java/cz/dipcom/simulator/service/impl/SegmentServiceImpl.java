@@ -1,11 +1,15 @@
 package cz.dipcom.simulator.service.impl;
 
 
+import cz.dipcom.simulator.DTO.ResourceDTO;
 import cz.dipcom.simulator.DTO.SegmentDTO;
 import cz.dipcom.simulator.DTO.mapper.SegmentMapper;
+import cz.dipcom.simulator.entity.BookEntity;
+import cz.dipcom.simulator.entity.ResourceEntity;
 import cz.dipcom.simulator.entity.SegmentEntity;
 import cz.dipcom.simulator.repository.SegmentRepository;
 import cz.dipcom.simulator.service.SegmentService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,12 +40,21 @@ public class SegmentServiceImpl implements SegmentService {
 
     @Override
     public SegmentDTO editSegment(Long id, SegmentDTO segmentDTO) {
-        return null;
+        if (!segmentRepository.existsById(id)) {
+            throw new EntityNotFoundException("Person with id " + id + " wasn't found in the database.");
+        }
+        SegmentEntity entity = segmentMapper.toEntity(segmentDTO);
+        entity.setId(id);
+        SegmentEntity saved = segmentRepository.save(entity);
+        return segmentMapper.toDTO(saved);
     }
 
     @Override
     public SegmentDTO removeSegment(Long id) {
-        return null;
+        SegmentEntity segment = segmentRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        SegmentDTO model = segmentMapper.toDTO(segment);
+        segmentRepository.delete(segment);
+        return model;
     }
 
     @Override

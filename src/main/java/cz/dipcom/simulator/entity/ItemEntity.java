@@ -14,21 +14,28 @@ public class ItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private String callNumber;
+
     @Column(nullable = false)
     private String title;
-    @Column(nullable = false)
-    private String createdPublished;
-    @Column(nullable = false)
-    private String date;
-    @Column(nullable = false)
-    private String format;
-    @Column(nullable = false)
-    private String medium;
-    @Column(nullable = false)
-    private String language;
+    @ElementCollection
+    private List<String> createdPublished;
+
+    @ElementCollection
+    private List<String> callNumber;
+
+    @ElementCollection
+    private List<String> contributors;
+
+    @ElementCollection
+    private List<String> format;
+
+    @ElementCollection
+    private List<String> language;
+
+    @ElementCollection
+    private List<String> medium;
 
     @ElementCollection
     private List<String> notes;
+
 }

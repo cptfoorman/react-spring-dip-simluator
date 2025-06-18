@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SegmentDTO {
+    private Long id;
     @NotNull
     private String url;
     @NotNull

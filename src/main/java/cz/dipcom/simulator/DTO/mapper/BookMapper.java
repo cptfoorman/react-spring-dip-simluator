@@ -4,9 +4,39 @@ package cz.dipcom.simulator.DTO.mapper;
 import cz.dipcom.simulator.DTO.BookDTO;
 import cz.dipcom.simulator.entity.BookEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
-@Mapper(componentModel = "spring")
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
+
+
+@Mapper(componentModel = "spring", uses = ItemMapper.class)
 public interface BookMapper {
-    BookEntity toEntity(BookDTO DTO);
-    BookDTO toDTO(BookEntity entity);
+
+    @Mapping(target = "timestamp", source = "timestamp", qualifiedByName = "mapOffsetDateTimeToString")
+    @Mapping(target = "extractTimestamp", source = "extractTimestamp", qualifiedByName = "mapOffsetDateTimeToString")
+    @Mapping(target = "item", source = "item")
+    BookDTO toDTO(BookEntity book);
+
+    @Mapping(target = "idNum", ignore = true)
+    @Mapping(target = "extractTimestamp", source = "extractTimestamp", qualifiedByName = "mapDate")
+    @Mapping(target = "timestamp", source = "timestamp", qualifiedByName = "mapDate")
+    BookEntity toEntity(BookDTO bookDTO);
+
+    @Named("mapDate")
+    default OffsetDateTime mapDate(String dateString) {
+        if (dateString == null || dateString.isBlank()) {
+            return null;
+        }
+        return OffsetDateTime.parse(dateString, DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+    }
+    @Named("mapOffsetDateTimeToString")
+    default String mapOffsetDateTimeToString(OffsetDateTime dateTime) {
+        if (dateTime == null) {
+            return null;
+        }
+        return dateTime.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+    }
 }
