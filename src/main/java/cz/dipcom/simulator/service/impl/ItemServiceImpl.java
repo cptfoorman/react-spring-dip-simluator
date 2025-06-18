@@ -1,10 +1,8 @@
 package cz.dipcom.simulator.service.impl;
 
 
-import cz.dipcom.simulator.DTO.BookDTO;
 import cz.dipcom.simulator.DTO.ItemDTO;
 import cz.dipcom.simulator.DTO.mapper.ItemMapper;
-import cz.dipcom.simulator.entity.BookEntity;
 import cz.dipcom.simulator.entity.ItemEntity;
 import cz.dipcom.simulator.repository.ItemRepository;
 import cz.dipcom.simulator.service.ItemService;

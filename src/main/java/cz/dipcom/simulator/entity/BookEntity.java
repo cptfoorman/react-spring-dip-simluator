@@ -4,6 +4,7 @@ package cz.dipcom.simulator.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.redis.core.RedisHash;
 
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;

@@ -12,8 +12,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,6 +34,7 @@ public class BookServiceImpl implements BookService {
         BookEntity book = fetchBookById(id);
         return bookMapper.toDTO(book);
     }
+    @Cacheable(value = "BOOK_LIST")
     @Override
     public List<BookDTO> getAllBooks() {
         return bookRepository.findAll()
@@ -49,8 +50,13 @@ public class BookServiceImpl implements BookService {
                 .map(bookMapper::toDTO)
                 .collect(Collectors.toList());
     }
-
-    @CachePut(value = "BOOK_CACHE", key = "#result.idNum()")
+    @Caching(evict = {
+            @CacheEvict(value = "BOOK_LIST", allEntries = true),
+            @CacheEvict(value = "BOOK_CACHE", key = "#result.getIdNum()")
+    },put ={
+            @CachePut(value = "BOOK_CACHE", key = "#result.getIdNum()")
+    }
+    )
     @Override
     public BookDTO addBook(BookDTO bookDTO) {
         BookEntity bookEntity = bookMapper.toEntity(bookDTO);
@@ -58,7 +64,10 @@ public class BookServiceImpl implements BookService {
         return bookMapper.toDTO(bookRepository.save(bookEntity));
     }
 
-    @CacheEvict(value = "BOOK_CACHE", key = "#id")
+    @Caching(evict = {
+            @CacheEvict(value = "BOOK_LIST", allEntries = true),
+            @CacheEvict(value = "BOOK_CACHE", key = "#id")
+    })
     @Override
     public BookDTO deleteBook(Long id) {
         BookEntity book = bookRepository.findById(id).orElseThrow(EntityNotFoundException::new);
@@ -75,7 +84,13 @@ public class BookServiceImpl implements BookService {
                 .collect(Collectors.toList());
     }
 
-    @CachePut(value = "BOOK_CACHE", key = "#result.idNum()")
+    @Caching(evict = {
+            @CacheEvict(value = "BOOK_LIST", allEntries = true),
+            @CacheEvict(value = "BOOK_CACHE", key = "#result.getIdNum()")
+    },put ={
+            @CachePut(value = "BOOK_CACHE", key = "#result.getIdNum()")
+    }
+    )
     @Override
     public BookDTO editBook(Long id, BookDTO bookDTO) {
         System.out.println("sent DTO for edit: " + bookDTO);

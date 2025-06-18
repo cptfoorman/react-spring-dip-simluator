@@ -11,8 +11,6 @@ public class SegmentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    private BookEntity book;
     @Column(nullable = false)
     private String url;
     @Column(nullable = false)

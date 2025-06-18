@@ -7,7 +7,6 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface SegmentMapper {
-    @Mapping(target = "book", ignore = true)
     SegmentEntity toEntity(SegmentDTO DTO);
     SegmentDTO toDTO(SegmentEntity entity);
 }

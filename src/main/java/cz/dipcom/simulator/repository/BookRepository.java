@@ -6,6 +6,7 @@ import cz.dipcom.simulator.repository.filters.BookFilter;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
@@ -26,6 +27,7 @@ public interface BookRepository extends PagingAndSortingRepository<BookEntity, L
     List<BookEntity> findAllBooks(@Param("filter") BookFilter filter, Pageable pageable);
 
     List<BookEntity> findByAccessRestricted(boolean isRestricted);
+
 
 
 }
