@@ -1,5 +1,8 @@
 package cz.dipcom.simulator.DTO;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,33 +12,38 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ResourceDTO {
     private Long id;
-    @NotNull
+    @Nullable
+    @JsonProperty("djvu_text_file")
     private String djvuTextFile;
-    @NotNull
+    @Nullable
+    @JsonProperty("fulltext_derivative")
     private String fulltextDerivative;
-    @NotNull
+    @Nullable
+    @JsonProperty("fulltext_file")
     private String fulltextFile;
-    @NotNull
+    @Nullable
     private String image;
-    @NotNull
+    @Nullable
+    @JsonProperty("paprika_resource_path")
     private String paprikaResourcePath;
-    @NotNull
+    @Nullable
     private String pdf;
-    @NotNull
+    @Nullable
     private String search;
-    @NotNull
+    @Nullable
     private String url;
-    @NotNull
+    @Nullable
+    @JsonProperty("representative_index")
     private int representativeIndex;
-    @NotNull
+    @Nullable
     private int version;
-    @NotNull
+    @Nullable
     private int segments;
-    @NotNull
+    @Nullable
     private int files;
-
 
 }
 

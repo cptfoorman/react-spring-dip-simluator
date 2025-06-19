@@ -6,6 +6,7 @@ import cz.dipcom.simulator.repository.filters.BookFilter;
 import org.springframework.data.domain.Pageable;
 
 import java.awt.print.Book;
+import java.net.http.HttpResponse;
 import java.util.List;
 
 public interface BookService {
@@ -24,4 +25,6 @@ public interface BookService {
     BookDTO editBook(Long id, BookDTO bookDTO);
 
     BookEntity fetchBookById(Long id);
+
+    List<BookDTO> saveBooks(List<BookDTO> bookDTOS);
 }

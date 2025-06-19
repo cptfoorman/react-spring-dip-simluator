@@ -1,6 +1,8 @@
 package cz.dipcom.simulator.DTO;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,13 +11,14 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SegmentDTO {
     private Long id;
-    @NotNull
+    @Nullable
     private String url;
-    @NotNull
+    @Nullable
     private Integer count;
-    @NotNull
+    @Nullable
     private String link;
 }
 

@@ -1,64 +1,86 @@
 package cz.dipcom.simulator.DTO;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BookDTO {
-    @JsonProperty("numericId")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY, value = "numericId")
     private Long idNum;
-    @NotNull
+    @Nullable
+    @JsonProperty("title")
     private String title;
-    @NotNull
+    @Nullable
+    @JsonProperty("type")
     private String type;
-    @NotNull
+    @Nullable
+    @JsonProperty("url")
     private String url;
-    @NotNull
+    @Nullable
+    @JsonProperty("shelf_id")
     private String shelfId;
 
-    @NotNull
+    @Nullable
     @JsonProperty("id")
     private String urlId;
-    @NotNull
+    @Nullable
+    @JsonProperty("access_restricted")
     private boolean accessRestricted;
-    @NotNull
+    @Nullable
+    @JsonProperty("digitized")
     private boolean digitized;
-    @NotNull
+    @Nullable
+    @JsonProperty("has_segments")
     private boolean hasSegments;
 
+    @JsonProperty("date")
     private String date;
+    @JsonProperty("extract_timestamp")
     private String  extractTimestamp;
+    @JsonProperty("timestamp")
     private String  timestamp;
 
-    @NotNull
+    @Nullable
+    @JsonProperty("aka")
     private List<String> aka;
-    @NotNull
+    @Nullable
+    @JsonProperty("contributors")
     private List<String> contributors;
-    @NotNull
+    @Nullable
+    @JsonProperty("language")
     private List<String> language;
-    @NotNull
+    @Nullable
+    @JsonProperty("mime_type")
     private List<String> mimeType;
-    @NotNull
+    @Nullable
+    @JsonProperty("number")
     private List<String> number;
-    @NotNull
+    @Nullable
+    @JsonProperty("number_lccn")
     private List<String> numberLccn;
-    @NotNull
+    @Nullable
+    @JsonProperty("number_oclc")
     private List<String> numberOclc;
-    @NotNull
+    @Nullable
+    @JsonProperty("online_format")
     private List<String> onlineFormat;
-    @NotNull
+    @Nullable
+    @JsonProperty("image_url")
     private List<String> imageUrl;
-    @NotNull
+    @Nullable
+    @JsonProperty("partof")
     private List<String> partof;
 
     private ItemDTO item;

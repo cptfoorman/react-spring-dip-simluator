@@ -7,6 +7,7 @@ import cz.dipcom.simulator.entity.BookEntity;
 import cz.dipcom.simulator.repository.BookRepository;
 import cz.dipcom.simulator.repository.filters.BookFilter;
 import cz.dipcom.simulator.service.BookService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.cache.annotation.CacheEvict;
@@ -108,5 +109,17 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Book with id " + id + " wasn't found in the database."));
+    }
+
+    @Override
+    public List<BookDTO> saveBooks(List<BookDTO> bookDTOs) {
+        List<BookEntity> books = bookDTOs.stream()
+                .map(bookMapper::toEntity)
+                .toList();
+
+        List<BookEntity> savedBooks = bookRepository.saveAll(books); // Save and retrieve
+        return savedBooks.stream()
+                .map(bookMapper::toDTO) // Convert back to DTO with IDs
+                .toList();
     }
 }
