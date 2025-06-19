@@ -1,12 +1,16 @@
 package cz.dipcom.simulator.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * Entity class that is actually saved in the database
+ * nothing too much of note,
+ * I used element collections for the arrays of values the base JSON has
+ */
 @Getter
 @Setter
 @Entity(name = "item")

@@ -25,12 +25,25 @@ public class SegmentServiceImpl implements SegmentService {
     @Autowired
     private SegmentRepository segmentRepository;
 
+    /**
+     * Returns an entity according to its id
+     *
+     * @param id
+     * @return SegmentDTO
+     */
     @Override
     public SegmentDTO getSegment(Long id) {
         SegmentEntity segment = segmentRepository.getReferenceById(id);
         return segmentMapper.toDTO(segment);
     }
 
+
+    /**
+     * Adds an entity to the database
+     *
+     * @param segmentDTO
+     * @return SegmentDTO
+     */
     @Override
     public SegmentDTO addSegment(SegmentDTO segmentDTO) {
         SegmentEntity newSegment = segmentMapper.toEntity(segmentDTO);
@@ -38,6 +51,12 @@ public class SegmentServiceImpl implements SegmentService {
         return segmentMapper.toDTO(savedSegment);
     }
 
+    /**
+     * Edits an existing Entity in the database using a new DTO and overwriting the old one
+     * @param segmentDTO
+     * @param id
+     * @return SegmentDTO
+     */
     @Override
     public SegmentDTO editSegment(Long id, SegmentDTO segmentDTO) {
         if (!segmentRepository.existsById(id)) {
@@ -49,6 +68,13 @@ public class SegmentServiceImpl implements SegmentService {
         return segmentMapper.toDTO(saved);
     }
 
+
+    /**
+     * Deletes an entity according to its id
+     *
+     * @param id
+     * @return SegmentDTO
+     */
     @Override
     public SegmentDTO removeSegment(Long id) {
         SegmentEntity segment = segmentRepository.findById(id).orElseThrow(EntityNotFoundException::new);
@@ -57,6 +83,11 @@ public class SegmentServiceImpl implements SegmentService {
         return model;
     }
 
+    /**
+     * Gets all segments without any filters
+     *
+     * @return List<SegmentDTO>
+     */
     @Override
     public List<SegmentDTO> getAllSegments() {
         List<SegmentDTO> results = new ArrayList<>();

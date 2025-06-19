@@ -14,9 +14,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
+
+/*
+* Custom JSON parsing logic for the metadata
+* had to implement better error management since some of the objects
+* inside the provided JSON either have faults in them,
+*  or somehow the object mapper cant parse so many files
+* since it was resulting in errors I made it batch based
+* it takes longer, but it does at least map most of the objects
+* and sends back apropriate responses
+* */
 
 @Service
 public class MetadataServiceImpl implements MetadataService {
@@ -26,6 +34,12 @@ public class MetadataServiceImpl implements MetadataService {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
+    /*
+    * Method for loading metadata from data folder
+    * @return HttpStatus -NOT_FOUND
+    *                    -BAD_REQUEST
+    *                    -CREATED
+    *                    -PARTIAL_CONTENT*/
     @Override
     public HttpStatus loadMetadata() throws IOException {
         File file = Paths.get("data", "metadata.json").toFile();

@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * service for base CRUD operations with Item Entities
+ */
 @Service
 public class ItemServiceImpl implements ItemService {
 
@@ -24,13 +27,24 @@ public class ItemServiceImpl implements ItemService {
     private ItemMapper itemMapper;
 
 
-
+    /**
+     * Returns an entity according to its id
+     *
+     * @param id
+     * @return ItemDTO
+     */
     @Override
     public ItemDTO getItem(Long id) {
-        ItemEntity item = itemRepository.findById(id).orElseThrow(()->new EntityNotFoundException("item id "+id+" has not been found"));
+        ItemEntity item = itemRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("item id " + id + " has not been found"));
         return itemMapper.toDTO(item);
     }
 
+    /**
+     * Deletes an entity according to its id
+     *
+     * @param id
+     * @return ItemDTO
+     */
     @Override
     public ItemDTO removeItem(Long id) {
         ItemEntity item = itemRepository.findById(id).orElseThrow(EntityNotFoundException::new);
@@ -39,6 +53,15 @@ public class ItemServiceImpl implements ItemService {
         return model;
     }
 
+
+    /**
+     * Edits an existing Entity in the database using a new DTO and
+     * overwriting the old one
+     *
+     * @param itemDTO
+     * @param id
+     * @return ItemDTO
+     */
     @Override
     public ItemDTO editItem(Long id, ItemDTO itemDTO) {
         if (!itemRepository.existsById(id)) {
@@ -50,15 +73,26 @@ public class ItemServiceImpl implements ItemService {
         return itemMapper.toDTO(saved);
     }
 
+    /**
+     * Gets all items without any filters
+     *
+     * @return List<ItemDTO>
+     */
     @Override
     public List<ItemDTO> getAllItems() {
-        List<ItemDTO> results =  new ArrayList<>();
-        for (ItemEntity item:itemRepository.findAll()){
+        List<ItemDTO> results = new ArrayList<>();
+        for (ItemEntity item : itemRepository.findAll()) {
             results.add(itemMapper.toDTO(item));
         }
         return results;
     }
 
+    /**
+     * Adds an entity to the database
+     *
+     * @param itemDTO
+     * @return ItemDTO
+     */
     @Override
     public ItemDTO addItem(ItemDTO itemDTO) {
         ItemEntity newItem = itemRepository.save(itemMapper.toEntity(itemDTO));

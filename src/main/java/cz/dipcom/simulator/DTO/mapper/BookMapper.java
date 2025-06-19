@@ -7,11 +7,13 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 
-
+/**
+ * Mapping Class for converting entities and DTOs,
+ * used org.mapstruct since writing this logic with hands is very prone to errors
+ */
 @Mapper(componentModel = "spring", uses = ItemMapper.class)
 public interface BookMapper {
 

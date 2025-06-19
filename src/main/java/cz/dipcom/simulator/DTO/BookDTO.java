@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BookDTO {
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY, value = "numericId")
+    @JsonProperty(value = "numericId")
     private Long idNum;
     @Nullable
     @JsonProperty("title")
@@ -48,9 +48,9 @@ public class BookDTO {
     @JsonProperty("date")
     private String date;
     @JsonProperty("extract_timestamp")
-    private String  extractTimestamp;
+    private String extractTimestamp;
     @JsonProperty("timestamp")
-    private String  timestamp;
+    private String timestamp;
 
     @Nullable
     @JsonProperty("aka")

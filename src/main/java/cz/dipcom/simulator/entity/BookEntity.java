@@ -4,12 +4,17 @@ package cz.dipcom.simulator.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.redis.core.RedisHash;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.List;
 
+
+/**
+ * Entity class that is actually saved in the database
+ * nothing too much of note,
+ * I used element collections for the arrays of values the base JSON has
+ * and I used OffsetDateTime for dates since it parses way easier than LocalDateTime
+ */
 @Getter
 @Setter
 @Entity

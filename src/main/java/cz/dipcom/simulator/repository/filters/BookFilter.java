@@ -4,6 +4,10 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+/**
+ * Filter Object for querries,
+ * made it into an object to encapsulate the parameters
+ */
 @Data
 public class BookFilter {
     private String title;

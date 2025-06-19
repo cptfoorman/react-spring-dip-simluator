@@ -20,6 +20,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Service for managing Book Entity persistence and fetching logic
+ */
 @Service
 public class BookServiceImpl implements BookService {
 
@@ -29,12 +32,24 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private BookMapper bookMapper;
 
-    @Cacheable(value = "BOOK_CACHE", key = "#id" )
+    /**
+     * gets book according to its numericalId
+     *
+     * @param id
+     * @return BookDTO
+     */
+    @Cacheable(value = "BOOK_CACHE", key = "#id")
     @Override
     public BookDTO getBook(Long id) {
         BookEntity book = fetchBookById(id);
         return bookMapper.toDTO(book);
     }
+
+    /**
+     * Gets all books without any filters
+     *
+     * @return List<BookDTO>
+     */
     @Cacheable(value = "BOOK_LIST")
     @Override
     public List<BookDTO> getAllBooks() {
@@ -44,17 +59,32 @@ public class BookServiceImpl implements BookService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Gets all books according to the filter
+     *
+     * @param bookFilter
+     * @return List<BookDTO>
+     */
+    @Cacheable(value = "BOOK_LIST")
     @Override
     public List<BookDTO> getAllBooksFiltered(BookFilter bookFilter) {
-        return bookRepository.findAllBooks(bookFilter,PageRequest.of(0,bookFilter.getLimit()))
+        return bookRepository.findAllBooks(bookFilter, PageRequest.of(0, bookFilter.getLimit()))
                 .stream()
                 .map(bookMapper::toDTO)
                 .collect(Collectors.toList());
     }
+
+
+    /**
+     * Adds a new Entity to the database
+     *
+     * @param bookDTO
+     * @return BookDTO bookDTO
+     */
     @Caching(evict = {
             @CacheEvict(value = "BOOK_LIST", allEntries = true),
             @CacheEvict(value = "BOOK_CACHE", key = "#result.getIdNum()")
-    },put ={
+    }, put = {
             @CachePut(value = "BOOK_CACHE", key = "#result.getIdNum()")
     }
     )
@@ -65,6 +95,13 @@ public class BookServiceImpl implements BookService {
         return bookMapper.toDTO(bookRepository.save(bookEntity));
     }
 
+
+    /**
+     * Deletes an entity according to its id
+     *
+     * @param id
+     * @return BookDTO
+     */
     @Caching(evict = {
             @CacheEvict(value = "BOOK_LIST", allEntries = true),
             @CacheEvict(value = "BOOK_CACHE", key = "#id")
@@ -77,6 +114,13 @@ public class BookServiceImpl implements BookService {
         return model;
     }
 
+
+    /**
+     * Finds books that have access_restricted true/false
+     *
+     * @param isRestricted
+     * @return List<BookDTO>
+     */
     @Override
     public List<BookDTO> getBookByIsRestricted(boolean isRestricted) {
         return bookRepository.findByAccessRestricted(isRestricted)
@@ -85,10 +129,17 @@ public class BookServiceImpl implements BookService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Edits an existing Entity in the database using a new DTO and overwriting the old one
+     *
+     * @param bookDTO
+     * @param id
+     * @return BookDTO bookDTO
+     */
     @Caching(evict = {
             @CacheEvict(value = "BOOK_LIST", allEntries = true),
             @CacheEvict(value = "BOOK_CACHE", key = "#result.getIdNum()")
-    },put ={
+    }, put = {
             @CachePut(value = "BOOK_CACHE", key = "#result.getIdNum()")
     }
     )
@@ -104,6 +155,12 @@ public class BookServiceImpl implements BookService {
         return bookMapper.toDTO(saved);
     }
 
+    /**
+     * reusalble function with error handling for finding books by id
+     *
+     * @param id
+     * @return BookEntity
+     */
     @Override
     public BookEntity fetchBookById(Long id) {
         return bookRepository.findById(id)
@@ -111,6 +168,14 @@ public class BookServiceImpl implements BookService {
                         "Book with id " + id + " wasn't found in the database."));
     }
 
+
+    /**
+     * method for saving a list of BookDTOs, had to use batching approach
+     * due to the errors while parsing the JSON
+     *
+     * @param bookDTOs
+     * @return List<BookDTO>
+     */
     @Override
     public List<BookDTO> saveBooks(List<BookDTO> bookDTOs) {
         List<BookEntity> books = bookDTOs.stream()

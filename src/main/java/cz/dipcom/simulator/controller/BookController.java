@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controller class for handling HTTp calls and requests
+ * - this class should not be doing any logical operations
+ * - all logic should be handled in the Service layer
+ */
 @RestController
 @RequestMapping("/api")
 public class BookController {

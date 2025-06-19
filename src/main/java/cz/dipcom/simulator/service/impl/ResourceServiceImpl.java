@@ -26,12 +26,24 @@ public class ResourceServiceImpl implements ResourceService {
     @Autowired
     private ResourceRepository resourceRepository;
 
+    /**
+     * Returns an entity according to its id
+     *
+     * @param id
+     * @return ResourceDTO
+     */
     @Override
     public ResourceDTO getResource(Long id) {
         ResourceEntity resource = resourceRepository.getReferenceById(id);
         return resourceMapper.toDTO(resource);
     }
 
+    /**
+     * Edits an existing Entity in the database using a new DTO and overwriting the old one
+     * @param resourceDTO
+     * @param id
+     * @return ResourceDTO
+     */
     @Override
     public ResourceDTO editResource(Long id, ResourceDTO resourceDTO) {
         if (resourceRepository.existsById(id)) {
@@ -43,6 +55,12 @@ public class ResourceServiceImpl implements ResourceService {
         return resourceMapper.toDTO(saved);
     }
 
+    /**
+     * Adds an entity to the database
+     *
+     * @param resourceDTO
+     * @return ResourceDTO
+     */
     @Override
     public ResourceDTO addResource(ResourceDTO resourceDTO) {
         ResourceEntity newResource = resourceMapper.toEntity(resourceDTO);
@@ -50,6 +68,12 @@ public class ResourceServiceImpl implements ResourceService {
         return resourceMapper.toDTO(savedResource);
     }
 
+    /**
+     * Deletes an entity according to its id
+     *
+     * @param id
+     * @return ResourceDTO
+     */
     @Override
     public ResourceDTO removeResource(Long id) {
         ResourceEntity resource = resourceRepository.findById(id).orElseThrow(EntityNotFoundException::new);
@@ -58,6 +82,11 @@ public class ResourceServiceImpl implements ResourceService {
         return model;
     }
 
+    /**
+     * Gets all resources without any filters
+     *
+     * @return List<ResourceDTO>
+     */
     @Override
     public List<ResourceDTO> getAllResources() {
         List<ResourceDTO> results = new ArrayList<>();
