@@ -27,4 +27,4 @@ pro testovací účely jsem nastavil databazi na spring.jpa.hibernate.ddl-auto=c
 pokud máte stejnojmenou databázi nerad bych byl zodpovědný za její vymazání
 
 budu rád za jakékoli návrhy na zlepšení chodu (zvlášť u parsování JSON dat ze souboru :D)
-děkuji za záminku se naučit gradle, postgresql a redis v rámci dvou týdnů - byla to bezvadná zkušensot :)
+děkuji za záminku se naučit gradle, postgresql a redis v rámci dvou týdnů - byla to bezvadná zkušenost :)
