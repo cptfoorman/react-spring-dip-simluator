@@ -68,7 +68,13 @@ public class BookServiceImpl implements BookService {
     @Cacheable(value = "BOOK_LIST")
     @Override
     public List<BookDTO> getAllBooksFiltered(BookFilter bookFilter) {
-        return bookRepository.findAllBooks(bookFilter, PageRequest.of(0, bookFilter.getLimit()))
+        System.out.println("");
+        System.out.println(" filter: "+bookFilter.getTitle());
+        System.out.println(" filter: "+bookFilter.getUrlId());
+        System.out.println(" filter: "+bookFilter.getShelfId());
+        System.out.println(" filter: "+bookFilter.getPage());
+        System.out.println("");
+        return bookRepository.findAllBooks(bookFilter, PageRequest.of(bookFilter.getPage(), bookFilter.getLimit()))
                 .stream()
                 .map(bookMapper::toDTO)
                 .collect(Collectors.toList());

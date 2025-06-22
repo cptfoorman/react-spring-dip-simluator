@@ -24,7 +24,7 @@ public class BookController {
     private List<BookDTO> getAllBooks(){
         return bookService.getAllBooks();
     }
-    @GetMapping({"/books/filter"})
+    @GetMapping("/books/filter")
     private List<BookDTO> getAllBooksFiltered(@ModelAttribute BookFilter bookFilter){
         return bookService.getAllBooksFiltered(bookFilter);
     }

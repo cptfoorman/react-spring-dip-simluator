@@ -24,7 +24,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/books?title=spiritual&type=text&language=english&mimeType=application%2Fpdf&accessRestricted=false&dateFrom=1854-01-01T00%3A00%3A00&dateTo=1854-12-31T23%3A59%3A59&page=0&size=10&sort=title,asc\n",
+					"raw": "http://localhost:8080/api/books/filter?title=spiritual&type=text&language=english&mimeType=application%2Fpdf&accessRestricted=false&shelfId=PS3089&page=0&limit=10&sort=title,asc\n",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -32,7 +32,8 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"books"
+						"books",
+						"filter"
 					],
 					"query": [
 						{
@@ -56,19 +57,15 @@
 							"value": "false"
 						},
 						{
-							"key": "dateFrom",
-							"value": "1854-01-01T00%3A00%3A00"
-						},
-						{
-							"key": "dateTo",
-							"value": "1854-12-31T23%3A59%3A59"
+							"key": "shelfId",
+							"value": "PS3089"
 						},
 						{
 							"key": "page",
 							"value": "0"
 						},
 						{
-							"key": "size",
+							"key": "limit",
 							"value": "10"
 						},
 						{
@@ -207,6 +204,49 @@
 					"path": [
 						"api",
 						"import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Books date filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/books/filter?yearFrom=1853&yearTo=1880&page=0&limit=10&sort=title,asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"books",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "yearFrom",
+							"value": "1853"
+						},
+						{
+							"key": "yearTo",
+							"value": "1880"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "sort",
+							"value": "title,asc"
+						}
 					]
 				}
 			},

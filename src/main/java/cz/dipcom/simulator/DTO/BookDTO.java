@@ -4,7 +4,6 @@ package cz.dipcom.simulator.DTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.annotation.Nullable;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +18,9 @@ import java.util.List;
 public class BookDTO {
     @JsonProperty(value = "numericId")
     private Long idNum;
+
+    @Nullable
+    private Integer index;
     @Nullable
     @JsonProperty("title")
     private String title;
@@ -46,7 +48,7 @@ public class BookDTO {
     private boolean hasSegments;
 
     @JsonProperty("date")
-    private String date;
+    private Integer date;
     @JsonProperty("extract_timestamp")
     private String extractTimestamp;
     @JsonProperty("timestamp")

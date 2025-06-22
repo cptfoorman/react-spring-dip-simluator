@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-06-19T14:36:16+0200",
+    date = "2025-06-22T17:03:11+0200",
     comments = "version: 1.6.3, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.13.jar, environment: Java 21.0.7 (Eclipse Adoptium)"
 )
 @Component
@@ -35,6 +35,7 @@ public class BookMapperImpl implements BookMapper {
         bookDTO.setExtractTimestamp( mapOffsetDateTimeToString( book.getExtractTimestamp() ) );
         bookDTO.setItem( itemMapper.toDTO( book.getItem() ) );
         bookDTO.setIdNum( book.getIdNum() );
+        bookDTO.setIndex( book.getIndex() );
         bookDTO.setTitle( book.getTitle() );
         bookDTO.setType( book.getType() );
         bookDTO.setUrl( book.getUrl() );
@@ -108,6 +109,7 @@ public class BookMapperImpl implements BookMapper {
         bookEntity.setDigitized( bookDTO.isDigitized() );
         bookEntity.setHasSegments( bookDTO.isHasSegments() );
         bookEntity.setUrlId( bookDTO.getUrlId() );
+        bookEntity.setIndex( bookDTO.getIndex() );
         bookEntity.setDate( bookDTO.getDate() );
         List<String> list = bookDTO.getAka();
         if ( list != null ) {

@@ -3,6 +3,8 @@ package cz.dipcom.simulator.repository.filters;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.util.Date;
 
 /**
  * Filter Object for querries,
@@ -15,8 +17,12 @@ public class BookFilter {
     private String language;
     private Boolean accessRestricted;
     private String mimeType;
-    private LocalDateTime dateFrom;
-    private LocalDateTime dateTo;
-    private int limit;
+    private String urlId;
+    private String shelfId;
+    private Integer index;
+    private Integer yearFrom;
+    private Integer yearTo;
+    private Integer limit = 10;
+    private int page = 0;
 
 }

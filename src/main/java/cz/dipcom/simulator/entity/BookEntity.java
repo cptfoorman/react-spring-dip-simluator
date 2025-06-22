@@ -42,7 +42,9 @@ public class BookEntity {
     private String urlId;
 
     @Column(nullable = false)
-    private String date;
+    private Integer index;
+    @Column(nullable = false)
+    private Integer date;
     @Column(nullable = false)
     private OffsetDateTime extractTimestamp;
     @Column(nullable = false)
