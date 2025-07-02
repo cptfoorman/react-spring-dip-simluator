@@ -2,10 +2,6 @@ package cz.dipcom.simulator.repository.filters;
 
 import lombok.Data;
 
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.util.Date;
-
 /**
  * Filter Object for querries,
  * made it into an object to encapsulate the parameters

@@ -7,9 +7,8 @@ import cz.dipcom.simulator.entity.BookEntity;
 import cz.dipcom.simulator.repository.BookRepository;
 import cz.dipcom.simulator.repository.filters.BookFilter;
 import cz.dipcom.simulator.service.BookService;
-import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -65,7 +64,7 @@ public class BookServiceImpl implements BookService {
      * @param bookFilter
      * @return List<BookDTO>
      */
-    @Cacheable(value = "BOOK_LIST")
+    @Cacheable(value = "BOOK_LIST_FILTERED")
     @Override
     public List<BookDTO> getAllBooksFiltered(BookFilter bookFilter) {
         System.out.println("");
@@ -89,6 +88,7 @@ public class BookServiceImpl implements BookService {
      */
     @Caching(evict = {
             @CacheEvict(value = "BOOK_LIST", allEntries = true),
+            @CacheEvict(value = "BOOK_LIST_FILTERED", allEntries = true),
             @CacheEvict(value = "BOOK_CACHE", key = "#result.getIdNum()")
     }, put = {
             @CachePut(value = "BOOK_CACHE", key = "#result.getIdNum()")
@@ -110,6 +110,7 @@ public class BookServiceImpl implements BookService {
      */
     @Caching(evict = {
             @CacheEvict(value = "BOOK_LIST", allEntries = true),
+            @CacheEvict(value = "BOOK_LIST_FILTERED", allEntries = true),
             @CacheEvict(value = "BOOK_CACHE", key = "#id")
     })
     @Override
@@ -144,6 +145,7 @@ public class BookServiceImpl implements BookService {
      */
     @Caching(evict = {
             @CacheEvict(value = "BOOK_LIST", allEntries = true),
+            @CacheEvict(value = "BOOK_LIST_FILTERED", allEntries = true),
             @CacheEvict(value = "BOOK_CACHE", key = "#result.getIdNum()")
     }, put = {
             @CachePut(value = "BOOK_CACHE", key = "#result.getIdNum()")

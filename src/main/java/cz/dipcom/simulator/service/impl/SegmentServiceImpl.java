@@ -1,11 +1,8 @@
 package cz.dipcom.simulator.service.impl;
 
 
-import cz.dipcom.simulator.DTO.ResourceDTO;
 import cz.dipcom.simulator.DTO.SegmentDTO;
 import cz.dipcom.simulator.DTO.mapper.SegmentMapper;
-import cz.dipcom.simulator.entity.BookEntity;
-import cz.dipcom.simulator.entity.ResourceEntity;
 import cz.dipcom.simulator.entity.SegmentEntity;
 import cz.dipcom.simulator.repository.SegmentRepository;
 import cz.dipcom.simulator.service.SegmentService;

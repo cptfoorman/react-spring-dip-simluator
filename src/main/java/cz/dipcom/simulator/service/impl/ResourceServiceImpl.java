@@ -1,11 +1,8 @@
 package cz.dipcom.simulator.service.impl;
 
 
-import cz.dipcom.simulator.DTO.ItemDTO;
 import cz.dipcom.simulator.DTO.ResourceDTO;
 import cz.dipcom.simulator.DTO.mapper.ResourceMapper;
-import cz.dipcom.simulator.entity.BookEntity;
-import cz.dipcom.simulator.entity.ItemEntity;
 import cz.dipcom.simulator.entity.ResourceEntity;
 import cz.dipcom.simulator.repository.ResourceRepository;
 import cz.dipcom.simulator.service.ResourceService;

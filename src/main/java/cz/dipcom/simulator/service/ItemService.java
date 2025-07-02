@@ -1,7 +1,6 @@
 package cz.dipcom.simulator.service;
 
 import cz.dipcom.simulator.DTO.ItemDTO;
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 
 import java.util.List;
 
