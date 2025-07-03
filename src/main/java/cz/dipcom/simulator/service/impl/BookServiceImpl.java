@@ -67,12 +67,7 @@ public class BookServiceImpl implements BookService {
     @Cacheable(value = "BOOK_LIST_FILTERED")
     @Override
     public List<BookDTO> getAllBooksFiltered(BookFilter bookFilter) {
-        System.out.println("");
-        System.out.println(" filter: "+bookFilter.getTitle());
-        System.out.println(" filter: "+bookFilter.getUrlId());
-        System.out.println(" filter: "+bookFilter.getShelfId());
-        System.out.println(" filter: "+bookFilter.getPage());
-        System.out.println("");
+
         return bookRepository.findAllBooks(bookFilter, PageRequest.of(bookFilter.getPage(), bookFilter.getLimit()))
                 .stream()
                 .map(bookMapper::toDTO)
@@ -153,7 +148,6 @@ public class BookServiceImpl implements BookService {
     )
     @Override
     public BookDTO editBook(Long id, BookDTO bookDTO) {
-        System.out.println("sent DTO for edit: " + bookDTO);
         if (!bookRepository.existsById(id)) {
             throw new EntityNotFoundException("Book with id " + id + " wasn't found in the database.");
         }

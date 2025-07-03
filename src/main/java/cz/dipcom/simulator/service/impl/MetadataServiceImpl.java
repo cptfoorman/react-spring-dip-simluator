@@ -67,8 +67,6 @@ public class MetadataServiceImpl implements MetadataService {
                     if (book.getType() == null) {
                         book.setType("text"); // default fallback
                     }
-
-                    System.out.println("✅ Parsed Book Type = " + book.getType());
                     bookService.addBook(book); // Assume this saves one entry
                     successCount++;
 

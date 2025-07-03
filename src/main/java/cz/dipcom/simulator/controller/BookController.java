@@ -42,7 +42,6 @@ public class BookController {
     }
     @PostMapping("/book/new")
     private BookDTO newBook(@RequestBody BookDTO bookDTO){
-        System.out.println(bookDTO);
         return bookService.addBook(bookDTO);
     }
     @DeleteMapping("/book/delete/{id}")
